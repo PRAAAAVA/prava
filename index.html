@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>قوانين السيرفر | PRAVA RP</title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+  <style>
+    :root {
+      --bg-color: #0b0e14;
+      --card-bg: #151a23;
+      --accent-color: #e5b849;
+      --text-color: #e2e8f0;
+      --text-muted: #94a3b8;
+      --sidebar-width: 260px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      display: flex;
+      min-height: 100vh;
+    }
+
+    /* Sidebar Navigation */
+    .sidebar {
+      width: var(--sidebar-width);
+      background-color: #10141d;
+      padding: 20px;
+      position: fixed;
+      height: 100vh;
+      border-left: 1px solid #1e293b;
+      overflow-y: auto;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 30px;
+      padding-bottom: 15px;
+      border-bottom: 1px solid #1e293b;
+    }
+
+    .brand i {
+      font-size: 24px;
+      color: var(--accent-color);
+    }
+
+    .brand h2 {
+      font-size: 20px;
+      color: #fff;
+    }
+
+    .nav-links {
+      list-style: none;
+    }
+
+    .nav-links li {
+      margin-bottom: 8px;
+    }
+
+    .nav-links a {
+      color: var(--text-muted);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 14px;
+      border-radius: 8px;
+      transition: all 0.3s ease;
+    }
+
+    .nav-links a:hover, .nav-links a.active {
+      background-color: var(--card-bg);
+      color: var(--accent-color);
+    }
+
+    /* Main Content Area */
+    .main-content {
+      margin-right: var(--sidebar-width);
+      flex: 1;
+      padding: 40px;
+    }
+
+    .header {
+      margin-bottom: 40px;
+    }
+
+    .header h1 {
+      font-size: 32px;
+      color: #fff;
+      margin-bottom: 10px;
+    }
+
+    .header p {
+      color: var(--text-muted);
+    }
+
+    .rule-section {
+      background-color: var(--card-bg);
+      border-radius: 12px;
+      padding: 25px;
+      margin-bottom: 30px;
+      border: 1px solid #1e293b;
+    }
+
+    .section-title {
+      font-size: 20px;
+      color: var(--accent-color);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 20px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid #2a3447;
+    }
+
+    .rule-item {
+      margin-bottom: 15px;
+      padding: 12px;
+      background-color: #0f131a;
+      border-radius: 6px;
+      border-right: 3px solid var(--accent-color);
+    }
+
+    .rule-item h4 {
+      color: #fff;
+      margin-bottom: 5px;
+    }
+
+    .rule-item p {
+      color: var(--text-muted);
+      font-size: 14px;
+      line-height: 1.6;
+    }
+
+    @media (max-width: 768px) {
+      body { flex-direction: column; }
+      .sidebar { width: 100%; height: auto; position: relative; border-left: none; }
+      .main-content { margin-right: 0; padding: 20px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Sidebar -->
+  <aside class="sidebar">
+    <div class="brand">
+      <i class="fa-solid => <i class="fa-solid fa-PRAVA"></i>
+      <h2>PRAVA Roleplay</h2>
+    </div>
+    <ul class="nav-links">
+      <li><a href="#general" class="active"><i class="fa-solid fa-shield-halved"></i> القوانين العامة</a></li>
+      <li><a href="#roleplay"><i class="fa-solid fa-masks-theater"></i> قوانين الرول بلاي</a></li>
+      <li><a href="#safezone"><i class="fa-solid fa-house-medical"></i> المناطق الآمنة</a></li>
+      <li><a href="#crimes"><i class="fa-solid fa-gun"></i> قوانين الإجرام</a></li>
+    </ul>
+  </aside>
+
+  <!-- Content -->
+  <main class="main-content">
+    <header class="header">
+      <h1>قوانين وخوابط السيرفر</h1>
+      <p>يرجى قراءة جميع القوانين بتمهل، عدم معرفتك بالقوانين لا يعفيك من العقوبة.</p>
+    </header>
+
+    <!-- Section 1 -->
+    <section id="general" class="rule-section">
+      <div class="section-title">
+        <i class="fa-solid fa-shield-halved"></i>
+        <h3>1. القوانين العامة</h3>
+      </div>
+      <div class="rule-item">
+        <h4>1.1 الاحترام المتبادل</h4>
+        <p>يمنع منعاً باتاً الإساءة والسب والقذف بأي شكل من الأشكال خارج إطار الرول بلاي (OOC).</p>
+      </div>
+      <div class="rule-item">
+        <h4>1.2 ثغرات اللعبة (Exploiting)</h4>
+        <p>يمنع استغلال أي خطأ برمجي أو مود للحصول على أسبقية أو أموال، ويجب الإبلاغ عنها فوراً.</p>
+      </div>
+    </section>
+
+    <!-- Section 2 -->
+    <section id="roleplay" class="rule-section">
+      <div class="section-title">
+        <i class="fa-solid fa-masks-theater"></i>
+        <h3>2. مصطلحات وقوانين الـ RP</h3>
+      </div>
+      <div class="rule-item">
+        <h4>2.1 التخريب (VDM & RDM)</h4>
+        <p>يمنع قتل أي لاعب بدون سبب رول بلاي منطقي (RDM)، أو استخدام المركبة كأداة دهس وقتل (VDM).</p>
+      </div>
+      <div class="rule-item">
+        <h4>2.2 الخوف على الحياة (Fear RP)</h4>
+        <p>يجب عليك تقدير حياة شخصيتك والخوف عليها عندما تكون واقعاً تحت التهديد السلاح المباشر.</p>
+      </div>
+    </section>
+  </main>
+
+</body>
+</html>
