@@ -22,7 +22,7 @@
       padding: 20px;
     }
 
-    /* الحاوية الرئيسية المركزية */
+    /* الحاوية الرئيسية */
     .container {
       background-color: #161616;
       border: 1px solid #282828;
@@ -34,74 +34,104 @@
       text-align: center;
     }
 
-    /* العنوان الرئيسي */
     .title {
       font-size: 26px;
       font-weight: bold;
       margin-bottom: 25px;
       color: #ffffff;
-      letter-spacing: 0.5px;
     }
 
-    /* خط الفاصل */
-    .divider {
-      border: none;
-      height: 1px;
-      background-color: #2a2a2a;
-      margin-bottom: 25px;
-    }
-
-    /* شبكة الأزرار */
-    .buttons-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 15px;
+    /* شبكة الخانات قابلة للتمدد */
+    .accordion-container {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
       margin-bottom: 30px;
+      text-align: right;
     }
 
-    /* تصميم البطاقة/الزر */
-    .rule-card {
+    /* الخانة الرئيسية */
+    details.rule-accordion {
       background-color: #1c1c1c;
       border: 1px solid #333333;
       border-radius: 8px;
-      padding: 18px 10px;
-      color: #ffffff;
-      text-decoration: none;
-      font-size: 15px;
-      font-weight: 600;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 8px;
-      transition: all 0.2s ease-in-out;
-      cursor: pointer;
+      overflow: hidden;
+      transition: all 0.3s ease;
     }
 
-    /* تأثير الهوفر عند مرور الماوس */
-    .rule-card:hover {
-      background-color: #252525;
+    details.rule-accordion[open] {
       border-color: #555555;
-      transform: translateY(-2px);
+      background-color: #202020;
     }
 
-    .star-icon {
-      font-size: 11px;
+    /* رأس الخانة الذي يتم الضغط عليه */
+    summary.rule-header {
+      padding: 16px 20px;
+      font-size: 16px;
+      font-weight: 600;
+      color: #ffffff;
+      cursor: pointer;
+      list-style: none;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      user-select: none;
+      transition: background-color 0.2s ease;
+    }
+
+    summary.rule-header:hover {
+      background-color: #252525;
+    }
+
+    summary.rule-header::-webkit-details-marker {
+      display: none;
+    }
+
+    /* أيقونة السهم الجانبي */
+    .arrow-icon {
+      font-size: 12px;
+      transition: transform 0.3s ease;
+      color: #888888;
+    }
+
+    details[open] .arrow-icon {
+      transform: rotate(180deg);
       color: #ffffff;
     }
 
-    /* الحقوق المكتوبة بالأسفل */
+    /* المحتوى الداخلي عند فتح الخانة */
+    .rule-content {
+      padding: 15px 20px 20px 20px;
+      border-top: 1px solid #2a2a2a;
+      background-color: #161616;
+    }
+
+    /* الخانات الإضافية/الفرعية بالداخل */
+    .sub-item {
+      background-color: #1c1c1c;
+      border: 1px solid #2a2a2a;
+      border-radius: 6px;
+      padding: 12px 15px;
+      margin-top: 10px;
+    }
+
+    .sub-item h4 {
+      color: #e5b849;
+      font-size: 14px;
+      margin-bottom: 5px;
+    }
+
+    .sub-item p {
+      color: #cccccc;
+      font-size: 13px;
+      line-height: 1.6;
+    }
+
     .footer-text {
       color: #555555;
       font-size: 12px;
       font-weight: 600;
       letter-spacing: 1px;
-    }
-
-    /* التجاوب مع الشاشات الصغيرة (الجوال) */
-    @media (max-width: 768px) {
-      .buttons-grid {
-        grid-template-columns: 1fr;
-      }
     }
   </style>
 </head>
@@ -109,39 +139,83 @@
 
   <div class="container">
     <h1 class="title">👑 قوانين مدينة برافا 👑</h1>
-    
-    <hr class="divider">
 
-    <div class="buttons-grid">
-      <a href="#" class="rule-card">
-        <span class="star-icon">✦</span>
-        قوانين المدينة
-        <span class="star-icon">✦</span>
-      </a>
+    <div class="accordion-container">
 
-      <a href="#" class="rule-card">
-        <span class="star-icon">✦</span>
-        قوانين المنظمات والعصابات
-        <span class="star-icon">✦</span>
-      </a>
+      <!-- الخانة الأولى -->
+      <details class="rule-accordion">
+        <summary class="rule-header">
+          <span>✦ قوانين المدينة ✦</span>
+          <span class="arrow-icon">▼</span>
+        </summary>
+        <div class="rule-content">
+          <div class="sub-item">
+            <h4>1.1 الاحترام المتبادل</h4>
+            <p>يمنع السب أو الشتم خارج نطاق الرول بلاي (OOC).</p>
+          </div>
+          <div class="sub-item">
+            <h4>1.2 التخريب (RDM/VDM)</h4>
+            <p>يمنع القتل بدون سبب رول بلاي أو استخدام المركبات للدهس.</p>
+          </div>
+        </div>
+      </details>
 
-      <a href="#" class="rule-card">
-        <span class="star-icon">✦</span>
-        قوانين الديسكورد
-        <span class="star-icon">✦</span>
-      </a>
+      <!-- الخانة الثانية -->
+      <details class="rule-accordion">
+        <summary class="rule-header">
+          <span>✦ قوانين المنظمات والعصابات ✦</span>
+          <span class="arrow-icon">▼</span>
+        </summary>
+        <div class="rule-content">
+          <div class="sub-item">
+            <h4>2.1 عدد أفراد السيناريو</h4>
+            <p>الحد الأقصى للمشاركة في السرقات الكبيرة هو 6 أفراد لكل طرف.</p>
+          </div>
+        </div>
+      </details>
 
-      <a href="#" class="rule-card">
-        <span class="star-icon">✦</span>
-        قوانين الوزارات
-        <span class="star-icon">✦</span>
-      </a>
+      <!-- الخانة الثالثة -->
+      <details class="rule-accordion">
+        <summary class="rule-header">
+          <span>✦ قوانين الديسكورد ✦</span>
+          <span class="arrow-icon">▼</span>
+        </summary>
+        <div class="rule-content">
+          <div class="sub-item">
+            <h4>3.1 الأسماء والأسماء المستعارة</h4>
+            <p>يجب أن يتطابق اسمك في الديسكورد مع اسم شخصيتك داخل اللعبة.</p>
+          </div>
+        </div>
+      </details>
 
-      <a href="#" class="rule-card">
-        <span class="star-icon">✦</span>
-        قوانين الهروب الأمني
-        <span class="star-icon">✦</span>
-      </a>
+      <!-- الخانة الرابعة -->
+      <details class="rule-accordion">
+        <summary class="rule-header">
+          <span>✦ قوانين الوزارات ✦</span>
+          <span class="arrow-icon">▼</span>
+        </summary>
+        <div class="rule-content">
+          <div class="sub-item">
+            <h4>4.1 الالتزام بالزي الرسمي</h4>
+            <p>يجب على جميع العساكر والمسعفين ارتداء الزي المخصص أثناء ساعات العمل.</p>
+          </div>
+        </div>
+      </details>
+
+      <!-- الخانة الخامسة -->
+      <details class="rule-accordion">
+        <summary class="rule-header">
+          <span>✦ قوانين الهروب الأمني ✦</span>
+          <span class="arrow-icon">▼</span>
+        </summary>
+        <div class="rule-content">
+          <div class="sub-item">
+            <h4>5.1 حدود السرعة والقفزات</h4>
+            <p>يمنع استخدام القفزات الخيالية (Ramp Jumps) أثناء المطاردات الأمنية.</p>
+          </div>
+        </div>
+      </details>
+
     </div>
 
     <div class="footer-text">
