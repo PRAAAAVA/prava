@@ -10,6 +10,7 @@
       margin: 0;
       padding: 0;
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      font-weight: bold;
     }
 
     body {
@@ -22,14 +23,13 @@
       padding: 20px;
     }
 
-    /* الحاوية الرئيسية */
     .container {
       background-color: #161616;
       border: 1px solid #282828;
       border-radius: 12px;
       width: 100%;
-      max-width: 800px;
-      padding: 35px 30px;
+      max-width: 900px;
+      padding: 35px 20px;
       box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
       text-align: center;
     }
@@ -37,191 +37,380 @@
     .title {
       font-size: 26px;
       font-weight: bold;
-      margin-bottom: 25px;
+      margin-bottom: 20px;
       color: #ffffff;
     }
 
-    /* شبكة الخانات قابلة للتمدد */
-    .accordion-container {
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-      margin-bottom: 30px;
-      text-align: right;
+    .divider {
+      border: none;
+      height: 1px;
+      background-color: #2a2a2a;
+      margin-bottom: 25px;
     }
 
-    /* الخانة الرئيسية */
-    details.rule-accordion {
+    .back-btn {
+      width: 100%;
       background-color: #1c1c1c;
       border: 1px solid #333333;
       border-radius: 8px;
-      overflow: hidden;
-      transition: all 0.3s ease;
-    }
-
-    details.rule-accordion[open] {
-      border-color: #555555;
-      background-color: #202020;
-    }
-
-    /* رأس الخانة الذي يتم الضغط عليه */
-    summary.rule-header {
-      padding: 16px 20px;
-      font-size: 16px;
-      font-weight: 600;
-      color: #ffffff;
+      padding: 12px;
+      color: #aaaaaa;
+      font-size: 14px;
+      font-weight: bold;
       cursor: pointer;
-      list-style: none;
+      margin-bottom: 20px;
+      transition: all 0.2s ease;
       display: flex;
-      justify-content: space-between;
+      justify-content: center;
       align-items: center;
-      user-select: none;
-      transition: background-color 0.2s ease;
+      gap: 8px;
     }
 
-    summary.rule-header:hover {
+    .back-btn:hover {
       background-color: #252525;
+      color: #ffffff;
+      border-color: #555555;
     }
 
-    summary.rule-header::-webkit-details-marker {
+    /* شبكة الأزرار التفاعلية لتوسيط العنصر الأخير عند وجود 4 عناصر */
+    .buttons-grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 15px;
+      margin-bottom: 30px;
+    }
+
+    .buttons-grid .rule-card {
+      width: calc(33.333% - 10px);
+    }
+
+    .rule-card {
+      background-color: #1c1c1c;
+      border: 1px solid #333333;
+      border-radius: 8px;
+      padding: 20px 10px;
+      color: #ffffff;
+      font-size: 15px;
+      font-weight: bold;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.2s ease-in-out;
+      cursor: pointer;
+      user-select: none;
+    }
+
+    .rule-card:hover {
+      background-color: #252525;
+      border-color: #555555;
+      transform: translateY(-2px);
+    }
+
+    /* حاوية عروض القوانين - إعدادات السطر الواحد */
+    .rules-list-box {
+      background-color: #121212;
+      border: 1px solid #282828;
+      border-radius: 8px;
+      padding: 25px 15px;
+      margin-bottom: 25px;
+      text-align: right;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      overflow-x: auto;
+    }
+
+    .rule-line {
+      color: #e0e0e0;
+      font-size: 12.5px;
+      line-height: 1.6;
+      font-weight: bold;
+      white-space: nowrap;
+    }
+
+    .rule-line strong {
+      color: #ffffff;
+      font-weight: bold;
+    }
+
+    .warning-text {
+      color: #ff3333;
+      font-weight: bold;
+      font-size: 13.5px;
+      margin-top: 10px;
+      padding-top: 15px;
+      border-top: 1px solid #282828;
+      text-align: center;
+      white-space: nowrap;
+    }
+
+    .page-section {
       display: none;
     }
 
-    /* أيقونة السهم الجانبي */
-    .arrow-icon {
-      font-size: 12px;
-      transition: transform 0.3s ease;
-      color: #888888;
-    }
-
-    details[open] .arrow-icon {
-      transform: rotate(180deg);
-      color: #ffffff;
-    }
-
-    /* المحتوى الداخلي عند فتح الخانة */
-    .rule-content {
-      padding: 15px 20px 20px 20px;
-      border-top: 1px solid #2a2a2a;
-      background-color: #161616;
-    }
-
-    /* الخانات الإضافية/الفرعية بالداخل */
-    .sub-item {
-      background-color: #1c1c1c;
-      border: 1px solid #2a2a2a;
-      border-radius: 6px;
-      padding: 12px 15px;
-      margin-top: 10px;
-    }
-
-    .sub-item h4 {
-      color: #e5b849;
-      font-size: 14px;
-      margin-bottom: 5px;
-    }
-
-    .sub-item p {
-      color: #cccccc;
-      font-size: 13px;
-      line-height: 1.6;
+    .page-section.active {
+      display: block;
     }
 
     .footer-text {
       color: #555555;
       font-size: 12px;
-      font-weight: 600;
+      font-weight: bold;
       letter-spacing: 1px;
+      margin-top: 10px;
+    }
+
+    @media (max-width: 768px) {
+      .buttons-grid .rule-card {
+        width: 100%;
+      }
+      .rule-line {
+        font-size: 11px;
+      }
     }
   </style>
 </head>
 <body>
 
   <div class="container">
-    <h1 class="title">👑 قوانين مدينة برافا 👑</h1>
 
-    <div class="accordion-container">
+    <!-- 1. الصفحة الرئيسية -->
+    <div id="main-menu" class="page-section active">
+      <h1 class="title">PRAVA RULES</h1>
+      <hr class="divider">
+      <div class="buttons-grid">
+        <div class="rule-card" onclick="openSection('city-rules-menu')">✦ قوانين المدينة ✦</div>
+        <div class="rule-card" onclick="openSection('gang-rules')">✦ قوانين المنظمات والعصابات ✦</div>
+        <div class="rule-card" onclick="openSection('discord-rules')">✦ قوانين الديسكورد ✦</div>
+        <div class="rule-card" onclick="openSection('gov-rules')">✦ قوانين الوزارات ✦</div>
+      </div>
+    </div>
 
-      <!-- الخانة الأولى -->
-      <details class="rule-accordion">
-        <summary class="rule-header">
-          <span>✦ قوانين المدينة ✦</span>
-          <span class="arrow-icon">▼</span>
-        </summary>
-        <div class="rule-content">
-          <div class="sub-item">
-            <h4>1.1 الاحترام المتبادل</h4>
-            <p>يمنع السب أو الشتم خارج نطاق الرول بلاي (OOC).</p>
-          </div>
-          <div class="sub-item">
-            <h4>1.2 التخريب (RDM/VDM)</h4>
-            <p>يمنع القتل بدون سبب رول بلاي أو استخدام المركبات للدهس.</p>
-          </div>
+    <!-- 2. قائمة أزرار قوانين المدينة -->
+    <div id="city-rules-menu" class="page-section">
+      <h1 class="title">قوانين المدينة</h1>
+      <hr class="divider">
+      <button class="back-btn" onclick="openSection('main-menu')">⬅ رجوع للرئيسية</button>
+      <div class="buttons-grid">
+        <div class="rule-card" onclick="openSection('perm-ban-rules')">↩ حالات تعرضك للباند النهائي ↩</div>
+        <div class="rule-card" onclick="openSection('terms-def')">↩ تعريف بعض المصطلحات ↩</div>
+        <div class="rule-card" onclick="openSection('chat-rules')">↩ قوانين شات اللعبة ↩</div>
+        <div class="rule-card" onclick="openSection('admin-req-rules')">↩ قوانين طلب الإداريين ↩</div>
+        <div class="rule-card" onclick="openSection('kidnap-loot-rules')">↩ قوانين الخطف والتلويت ↩</div>
+        <div class="rule-card" onclick="openSection('general-city-rules')">↩ قوانين عامة ↩</div>
+      </div>
+    </div>
+
+    <!-- صفحة: حالات تعرضك للباند النهائي -->
+    <div id="perm-ban-rules" class="page-section">
+      <h1 class="title">حالات تعرضك للباند النهائي</h1>
+      <hr class="divider">
+      <button class="back-btn" onclick="openSection('city-rules-menu')">⬅ رجوع للخلف</button>
+      <div class="rules-list-box">
+        <div class="rule-line">1 . ( القذف )</div>
+        <div class="rule-line">2 . ( الهاك )</div>
+        <div class="rule-line">3 . ( استخدام اي ملف يضر بيئة اللعب )</div>
+        <div class="rule-line">4 . ( النشر بجميع الاشكال سيرفرات اخرى + حسابات خاصة الى اخره... )</div>
+        <div class="rule-line">5 . ( كلام غير لائق عن كل ما يسبب شحنات طائفية أو دينية أو عرقية )</div>
+        <div class="rule-line">6 . ( كلام غير لائق عن القبايل والعوائل )</div>
+        <div class="rule-line">7 . ( التخريب المتعمد باستخدام صلاحيات الوزارات أو الصلاحيات الإدارية )</div>
+        <div class="warning-text"># مخالفة هذه القواعد الأساسية تعرضك للاستبعاد الفوري.</div>
+      </div>
+    </div>
+
+    <!-- صفحة: تعريف بعض المصطلحات -->
+    <div id="terms-def" class="page-section">
+      <h1 class="title">تعريف بعض المصطلحات</h1>
+      <hr class="divider">
+      <button class="back-btn" onclick="openSection('city-rules-menu')">⬅ رجوع للخلف</button>
+      <div class="rules-list-box">
+        <div class="rule-line">• <u><strong>RolePlay</strong></u> : الرول بلاي ( هو تقمص الحياة الواقعية بكل احترافية بالأقوال والأفعال ) .</div>
+        <div class="rule-line">• <u><strong>LAR</strong></u> : تقدير الحياة ( تقدير حياتك وحياة الآخرين بشكل واقعي ) .</div>
+        <div class="rule-line">• <u><strong>VDM</strong></u> : الصدم العشوائي ( استخدام المركبة كسلاح للقتل أو الصدم العشوائي للمركبات والمواطنين وعلى ذالك تمنع ) .</div>
+        <div class="rule-line">• <u><strong>RDM</strong></u> : القتل العشوائي ( هو القتل العشوائي أو القتل بدون تهديد ويمنع في المناطق الآمنة وعلى ذالك تمنع) .</div>
+      </div>
+    </div>
+
+    <!-- صفحة: قوانين شات اللعبة -->
+    <div id="chat-rules" class="page-section">
+      <h1 class="title">قوانين شات اللعبة</h1>
+      <hr class="divider">
+      <button class="back-btn" onclick="openSection('city-rules-menu')">⬅ رجوع للخلف</button>
+      <div class="rules-list-box">
+        <div class="rule-line">1 . ( الشات يعتبر خارج الرول بلاي، ويمنع استخدام أي معلومة بالشات بالرول بلاي )</div>
+        <div class="rule-line">2 . ( التحلي بالذوق والأدب ومراعاة مشاعر الآخرين )</div>
+        <div class="rule-line">3 . ( عدم السب والشتم أو استخدام الكلمات والعبارات والألفاظ البذيئة والهابطة )</div>
+        <div class="rule-line">4 . ( يمنع كتابة كل ما يسبب شحنات طائفية أو دينية أو عرقية، أو أي كلام غير لائق )</div>
+        <div class="rule-line">5 . ( يمنع عمل سبام بالشات مهما كان السبب )</div>
+      </div>
+    </div>
+
+    <!-- صفحة: قوانين طلب الإداريين -->
+    <div id="admin-req-rules" class="page-section">
+      <h1 class="title">قوانين طلب الإداريين</h1>
+      <hr class="divider">
+      <button class="back-btn" onclick="openSection('city-rules-menu')">⬅ رجوع للخلف</button>
+      <div class="rules-list-box">
+        <div class="rule-line">1 . ( يمنع طلب أدمن عن طريق الشات )</div>
+        <div class="rule-line">2 . ( يمنع طلب أموال من الأدمن لأي سبب من الأسباب أو طلب توصيل لمكان معين )</div>
+        <div class="rule-line">3 . ( منع طلب أدمن للإنعاش في المناطق الغير آمنة )</div>
+        <div class="rule-line">4 . ( يمنع طلب أدمن للإنعاش في مقرات العصابات )</div>
+        <div class="rule-line">5 . ( يمنع طلب أدمن أثناء السيناريو لأي سبب من الأسباب ومن يخالف ذلك يعرض نفسه للسجن الفوري )</div>
+        <div class="rule-line">6 . ( يمنع طلب أدمن بعد السيناريو للإنعاش، الخاسر يتحلل والفائز يطلب مسعف )</div>
+        <div class="rule-line">7 . ( يمنع طلب أدمن بقصد كلبشته أو قتله أو تلويته )</div>
+        <div class="rule-line">8 . ( إذا كان لديك شكوى على إداري يمنع منعاً باتاً كتابة ذلك في شات اللعبة، عليك رفع الشكوى بفتح تذكرة تكت )</div>
+      </div>
+    </div>
+
+    <!-- صفحة: قوانين الخطف والتلويت -->
+    <div id="kidnap-loot-rules" class="page-section">
+      <h1 class="title">قوانين الخطف والتلويت</h1>
+      <hr class="divider">
+      <button class="back-btn" onclick="openSection('city-rules-menu')">⬅ رجوع للخلف</button>
+      <div class="rules-list-box">
+        <div class="rule-line">1 . ( يمنع التلويت في المناطق الآمنة )</div>
+        <div class="rule-line">2 . ( يمنع تلويت الشخص أكثر من مره )</div>
+        <div class="rule-line">3 . ( يمنع التلويت في مناطق الفايتات )</div>
+        <div class="rule-line">4 . ( يمنع تلويت العساكر بجميع الأماكن إذا كانوا بالزي العسكري )</div>
+        <div class="rule-line">5 . ( يُسمح التلويت في المناطق الغير أمنة، ومقرات العصابات إذا كنت من أحد أعضاء العصابة )</div>
+        <div class="rule-line">6 . ( يُمنع على العساكر التلويت بالزي العسكري في جميع الأماكن )</div>
+        <div class="rule-line">7 . ( يمنع منعاً باتاً طلب أوبر أو ميكانيكي بقصد خطفه أو قتله أو تلويته )</div>
+        <div class="rule-line">8 . ( يمنع منعاً باتاً خطف أو قتل أو تلويت أو كلبشة المسعفين في جميع الأماكن )</div>
+        <div class="rule-line">9 . ( يمنع إنعاش أي شخص بغرض خطفه )</div>
+        <div class="rule-line">10 . ( يسمح الخطف في المناطق الآمنة إذا ركب السيارة معك أي شخص، ويبدأ الخطف بعد مرور (15) ثانية )</div>
+        <div class="rule-line">11 . ( لا يحق لك إبقاء رهينة فوق الـ "15" دقيقة من لحظة خطفه )</div>
+        <div class="rule-line">12 . ( في حال قيام العسكري بإلقاء القبض على أي متهم فـ له مهلة "15" دقيقة للانتهاء من السيناريو )</div>
+        <div class="rule-line">13 . ( يمنع التلويت من داخل المركبة )</div>
+      </div>
+    </div>
+
+    <!-- صفحة: قوانين عامة -->
+    <div id="general-city-rules" class="page-section">
+      <h1 class="title">قوانين عامة</h1>
+      <hr class="divider">
+      <button class="back-btn" onclick="openSection('city-rules-menu')">⬅ رجوع للخلف</button>
+      <div class="rules-list-box">
+        <div class="rule-line">1 . ( يمنع القتل العشوائي ويسمح فقط خارج المنطقة الآمنة )</div>
+        <div class="rule-line">2 . ( يمنع القتل في المناطق الآمنة أو التهديد بالسلاح )</div>
+        <div class="rule-line">3 . ( يمنع الدهس أو الصدم العشوائي )</div>
+        <div class="rule-line">4 . ( يمنع استخدام أسماء بذيئة أو غير لائقة أو مخفية أو فارغة )</div>
+        <div class="rule-line">5 . ( التنمر أو العنصرية أو التحرش أو السب يعرضك للسجن 30 شهر أو أكثر )</div>
+        <div class="rule-line">6 . ( استخدام الثغرات [القلتشات] يعرضك للسجن 30 شهر )</div>
+        <div class="rule-line">7 . ( يجب أن تحترم جميع من في السيرفر مهما كانت رتبهم )</div>
+        <div class="rule-line">8 . ( يمنع رد الغلط بالغلط، احفظ تصويرك واطلب أدمن )</div>
+        <div class="rule-line">9 . ( يمنع التخريب في الفعاليات والبطولات مهما كان السبب )</div>
+        <div class="rule-line">10 . ( يمنع استفزاز اللاعبين بقصد التصوير ورفع شكوى كيدية )</div>
+        <div class="rule-line">11 . ( إذا كان الشخص في حالة نزيف وتم علاجه بالموقع يتذكر الأحداث كاملة )</div>
+        <div class="rule-line">12 . ( في حال تم قتل الشخص وتحلل يجب عليه نسيان الأحداث السابقة 15 دقيقة )</div>
+      </div>
+    </div>
+
+    <!-- صفحة: قوانين المنظمات والعصابات -->
+    <div id="gang-rules" class="page-section">
+      <h1 class="title">قوانين المنظمات والعصابات</h1>
+      <hr class="divider">
+      <button class="back-btn" onclick="openSection('main-menu')">⬅ رجوع للرئيسية</button>
+      <div class="rules-list-box">
+        <div class="warning-text" style="border-top: none; margin-top: 0; padding-top: 0; font-size: 13.5px;">
+          يجب على جميع أفراد العصابات والمنظمات الالتزام التام بهذه البنود لتجنب العقوبات الإدارية.
         </div>
-      </details>
+        <div class="rule-line">1 . ( يمنع ارتداء أو استعمال أي خوذة أثناء مشاركتك في أي سيناريو أو فايت )</div>
+        <div class="rule-line">2 . ( على جميع أفراد المنظمات والعصابات الالتزام بقوانين سيرفر برافا وقوانين السيناريوهات، مخالفة إحدى القوانين يعرض الشخص والعصابة للمحاسبة )</div>
+        <div class="rule-line">3 . ( تعتبر مقرات المنظمات والعصابات مناطق غير آمنة للعساكر والمواطنين ويسمح بقتلهم وتلويتهم أو خطفهم، باستثناء المسعفين والإداريين المطلوبين بـ تيكت )</div>
+        <div class="rule-line">4 . ( يجب الالتزام بالرول بلاي )</div>
+        <div class="rule-line">5 . ( يمنع التحالف مع منظمة أو عصابة ضد منظمة أو عصابة دون اتفاق من قبل مسؤولين العصابات )</div>
+        <div class="rule-line">6 . ( يحق للمنظمة فتح مزاد على الرهائن بمختلف فئاتهم )</div>
+        <div class="rule-line">7 . ( المنظمات فقط هي المسؤولة عن الإجرام في المدينة وهي المصدرة للأسلحة والممنوعات والمركبات والمدرعات )</div>
+        <div class="rule-line">8 . ( جميع السلع التي تباع بالمنظمة محدد سعرها، ويمنع التفاوض على السعر )</div>
+        <div class="rule-line">9 . ( لا يوجد تعويض على الأسلحة والمركبات عند فقدانها أو سوء استخدامها )</div>
+        <div class="rule-line">10 . ( يمنع مداهمة المنظمات في حال فتح الأسواق، ويسمح لك بذلك بعد إغلاق الأسواق بـ 15 دقيقة )</div>
+        <div class="rule-line">11 . ( يجب على الجميع الخوف على حياتهم عند دخولهم للمنظمات )</div>
+        <div class="rule-line">12 . ( أي مواطن يدخل السوق السوداء وبيده سلاح يقتل فورًا بدون تهديد )</div>
+        <div class="rule-line">13 . ( يحق لأعضاء المنظمات عند فتح السوق قتل أي شخص لا يلتزم بالقوانين )</div>
+        <div class="rule-line">14 . ( يحق فتح سوق المنظمات في حال وجود 5 من أعضاء المنظمات )</div>
+        <div class="rule-line">15 . ( إخراج المدرعات والأسلحة بدون سبب وأخذ أسلحة بكميات هائلة يعرض المنظمة أو العصابة للإنذار ويعرض العضو للفصل )</div>
+        <div class="rule-line">16 . ( إعطاء المواطنين أو العساكر أسلحة من العصابات يعرضها للمحاسبة والانذار، حيث أن المنظمات هي المسؤولة عن البيع فقط )</div>
+        <div class="rule-line">17 . ( يمنع على جميع القطاعات العسكرية مداهمة المنظمات/العصابات بدون إعلان مسبق ويشترط قبوله )</div>
+        <div class="rule-line">18 . ( يمنع إنعاش أي شخص في مقرات المنظمات/العصابات باستثناء أعضاء المنظمة/العصابة )</div>
+        <div class="rule-line">19 . ( يمنع منعا باتا تبادل النار مع عسكري في المناطق الآمنة )</div>
+        <div class="rule-line">20 . ( يمنع استخدام صلاحيات المنظمة والعصابة مثل الكلبشة داخل المدينة، وأي استخدام خاطئ للصلاحيات يعرضك للمحاسبة )</div>
+        <div class="rule-line">21 . ( العصابة غير المتفاعلة لمدة 5 أيام تحصل على تحذير، واستمرار عدم التفاعل تؤدي إلى إغلاقها )</div>
+        <div class="rule-line">22 . ( يسمح بقتل أي شخص يدخل مقر العصابة أو المنظمة في حال إغلاق السوق فقط للمنظمات )</div>
+        <div class="rule-line">23 . ( أي مشاكل أخلاقية أو عنصرية أو شخصنة بين أفراد العصابة أو مع العصابات الأخرى تؤدي لعقوبات صارمة تصل إلى إغلاق العصابة )</div>
+        <div class="rule-line">24 . ( في حالة وجود مخالفة في سيناريو يمنع طلب إداري في منتصف السيناريو ويسمح لك بعد انتهاء السيناريو التوجه لمراقب السيناريو )</div>
+        <div class="rule-line">25 . ( يمنع على المواطنين والعساكر المشاركة في سيناريوهات مع عصابة/منظمة )</div>
+        <div class="rule-line">26 . ( يجب قبول المداهمة عند وجود 5 من أعضاء عصابة/منظمة )</div>
+        <div class="rule-line">27 . ( يمنع استخدام كلمات تدل على الاستفزاز مثل: ابلع، نوب، بوت، جلد، شق، دعس، القم، ايزي، إلى آخره )</div>
+        <div class="rule-line">28 . ( القتل خارج المناطق الآمنة دون تهديد وإنما قتل فوري )</div>
+        <div class="rule-line">29 . ( يجب على جميع أعضاء المنظمة/العصابة تقمص شخصية رجل العصابة والأعمال الإجرامية بكل احترافية )</div>
+        <div class="rule-line">30 . ( يمنع إعطاء أي شخص جديد على العصابة مسؤوليات إلا بعد مرور 10 أيام على الأقل )</div>
+        <div class="rule-line">31 . ( يجب على العصابة الالتزام بملابس موحدة يتم تحديدها من قبل رئيس العصابة )</div>
+        <div class="rule-line">32 . ( يجب الالتزام بالصف أثناء السيناريوهات، أي فوضى تعرض الشخص والمنظمة/العصابة للمحاسبة )</div>
+        <div class="rule-line">33 . ( يمنع استخدام الخواص الإدارية أثناء السيناريوهات وتتعرض للمحاسبة المشددة )</div>
+        <div class="rule-line">34 . ( يجب الالتزام بتعليمات وتوجيهات القانق مانجر )</div>
+        <div class="rule-line">35 . ( يجب الالتزام التام بالرول بلاي أثناء التفاوض وتقمص الشخصية الإجرامية بشكل كامل )</div>
+        <div class="rule-line">36 . ( المخالفات من رتبة قانق أوفشل وأعلى تعرض الشخص والمنظمة/العصابة للمحاسبة )</div>
+        <div class="rule-line">37 . ( يمنع على المنظمات/العصابات استخدام الطيارات إلا في حال وجود سيناريو متفق عليه )</div>
+        <div class="rule-line">38 . ( يمنع استخدام أصدقائك في إيهام العساكر بأنهم رهائن )</div>
+        <div class="rule-line">39 . ( مقرات المنظمات/العصابات آمنة لهم ولا يحق لأي أحد قتلهم فيها بدون إعلان مداهمة )</div>
+      </div>
+    </div>
 
-      <!-- الخانة الثانية -->
-      <details class="rule-accordion">
-        <summary class="rule-header">
-          <span>✦ قوانين المنظمات والعصابات ✦</span>
-          <span class="arrow-icon">▼</span>
-        </summary>
-        <div class="rule-content">
-          <div class="sub-item">
-            <h4>2.1 عدد أفراد السيناريو</h4>
-            <p>الحد الأقصى للمشاركة في السرقات الكبيرة هو 6 أفراد لكل طرف.</p>
-          </div>
-        </div>
-      </details>
+    <!-- صفحة: قوانين الديسكورد -->
+    <div id="discord-rules" class="page-section">
+      <h1 class="title">📱 قوانين الديسكورد 📱</h1>
+      <hr class="divider">
+      <button class="back-btn" onclick="openSection('main-menu')">⬅ رجوع للرئيسية</button>
+      <div class="rules-list-box">
+        <div class="rule-line">1 . ( يمنع السب والقذف واللعن )</div>
+        <div class="rule-line">2 . ( يمنع نشر أي سيرفر يتعلق بالفايف إم )</div>
+        <div class="rule-line">3 . ( يمنع نشر أي رابط يتعلق بمتاجر أو مواقع أو مجتمعات )</div>
+        <div class="rule-line">4 . ( يمنع استخدام رياكشنات مسيئة )</div>
+        <div class="rule-line">5 . ( يمنع وضع أسماء أو صور مسيئة أو خادشة للحياء والذوق العام )</div>
+        <div class="rule-line">6 . ( يمنع إرسال صور أو مقاطع مخلة بالآداب العامة )</div>
+        <div class="rule-line">7 . ( يمنع الاستهزاء والسخرية من الآخرين )</div>
+        <div class="rule-line">8 . ( يمنع العنصرية وسب الأديان أو القبائل )</div>
+        <div class="rule-line">9 . ( يمنع إزعاج الإداريين )</div>
+        <div class="rule-line">10 . ( يمنع نشر معلوماتك الشخصية واتس اب، سناب... الخ )</div>
+        <div class="rule-line">11 . ( احترام جميع الموجودين )</div>
+        <div class="rule-line">12 . ( عدم التكلم بالأمور السياسية والدينية )</div>
+        <div class="rule-line">13 . ( يمنع استفزاز الأعضاء والإدارة )</div>
+        <div class="rule-line">14 . ( يمنع مضايقة اللاعبين في الرومات الصوتية )</div>
+        <div class="rule-line">15 . ( يمنع إزعاج الإدارة بتكرار المنشن )</div>
+        <div class="rule-line">16 . ( الجدية في روم المزاد )</div>
+        <div class="warning-text"># مخالفة أي من القوانين الموضحة قد يعرضك إلى باند نهائي لذا يرجى من الجميع الالتزام بالقوانين الموضحة أعلاه.</div>
+      </div>
+    </div>
 
-      <!-- الخانة الثالثة -->
-      <details class="rule-accordion">
-        <summary class="rule-header">
-          <span>✦ قوانين الديسكورد ✦</span>
-          <span class="arrow-icon">▼</span>
-        </summary>
-        <div class="rule-content">
-          <div class="sub-item">
-            <h4>3.1 الأسماء والأسماء المستعارة</h4>
-            <p>يجب أن يتطابق اسمك في الديسكورد مع اسم شخصيتك داخل اللعبة.</p>
-          </div>
-        </div>
-      </details>
-
-      <!-- الخانة الرابعة -->
-      <details class="rule-accordion">
-        <summary class="rule-header">
-          <span>✦ قوانين الوزارات ✦</span>
-          <span class="arrow-icon">▼</span>
-        </summary>
-        <div class="rule-content">
-          <div class="sub-item">
-            <h4>4.1 الالتزام بالزي الرسمي</h4>
-            <p>يجب على جميع العساكر والمسعفين ارتداء الزي المخصص أثناء ساعات العمل.</p>
-          </div>
-        </div>
-      </details>
-
-      <!-- الخانة الخامسة -->
-      <details class="rule-accordion">
-        <summary class="rule-header">
-          <span>✦ قوانين الهروب الأمني ✦</span>
-          <span class="arrow-icon">▼</span>
-        </summary>
-        <div class="rule-content">
-          <div class="sub-item">
-            <h4>5.1 حدود السرعة والقفزات</h4>
-            <p>يمنع استخدام القفزات الخيالية (Ramp Jumps) أثناء المطاردات الأمنية.</p>
-          </div>
-        </div>
-      </details>
-
+    <!-- صفحة: قوانين الوزارات -->
+    <div id="gov-rules" class="page-section">
+      <h1 class="title">قوانين الوزارات</h1>
+      <hr class="divider">
+      <button class="back-btn" onclick="openSection('main-menu')">⬅ رجوع للرئيسية</button>
+      <div class="rules-list-box"><div class="rule-line">قريباً...</div></div>
     </div>
 
     <div class="footer-text">
       PRAVA RP
     </div>
+
   </div>
+
+  <script>
+    function openSection(sectionId) {
+      const sections = document.querySelectorAll('.page-section');
+      sections.forEach(section => {
+        section.classList.remove('active');
+      });
+
+      const targetSection = document.getElementById(sectionId);
+      if (targetSection) {
+        targetSection.classList.add('active');
+      }
+    }
+  </script>
 
 </body>
 </html>
