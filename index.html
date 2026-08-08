@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>قوانين مدينة برافا</title>
+  <title>قوانين مدينة برافات</title>
   <style>
     * {
       box-sizing: border-box;
@@ -14,7 +14,6 @@
     }
 
     body {
-      /* تعيين رابط الخلفية المباشر */
       background: linear-gradient(rgba(11, 11, 11, 0.35), rgba(11, 11, 11, 0.35)), url('https://lh3.googleusercontent.com/d/1inaBElruFzFg2S4t3eTHg3A8feB9l7-P') no-repeat center center fixed;
       background-size: cover;
       -webkit-background-size: cover;
@@ -218,7 +217,7 @@
 </head>
 <body>
 
-  <!-- الشعار المتحرك الجديد فوق المربع الرئيسي -->
+  <!-- الشعار المتحرك فوق المربع الرئيسي -->
   <div class="logo-container">
     <img src="https://lh3.googleusercontent.com/d/1MhtjldGq0dy7-Py8Wk5wLzVXja-vDBpY" alt="Logo" class="animated-logo">
   </div>
@@ -243,12 +242,12 @@
       <hr class="divider">
       <button class="back-btn" onclick="openSection('main-menu')">⬅ رجوع للرئيسية</button>
       <div class="buttons-grid">
-        <div class="rule-card" onclick="openSection('perm-ban-rules')">↩ حالات تعرضك للباند النهائي ↩</div>
-        <div class="rule-card" onclick="openSection('terms-def')">↩ تعريف بعض المصطلحات ↩</div>
-        <div class="rule-card" onclick="openSection('chat-rules')">↩ قوانين شات اللعبة ↩</div>
-        <div class="rule-card" onclick="openSection('admin-req-rules')">↩ قوانين طلب الإداريين ↩</div>
-        <div class="rule-card" onclick="openSection('kidnap-loot-rules')">↩ قوانين الخطف والتلويت ↩</div>
-        <div class="rule-card" onclick="openSection('general-city-rules')">↩ قوانين عامة ↩</div>
+        <div class="rule-card" onclick="openSection('perm-ban-rules')">✦ حالات تعرضك للباند النهائي ✦</div>
+        <div class="rule-card" onclick="openSection('terms-def')">✦ تعريف بعض المصطلحات ✦</div>
+        <div class="rule-card" onclick="openSection('chat-rules')">✦ قوانين شات اللعبة ✦</div>
+        <div class="rule-card" onclick="openSection('admin-req-rules')">✦ قوانين طلب الإداريين ✦</div>
+        <div class="rule-card" onclick="openSection('kidnap-loot-rules')">✦ قوانين الخطف والتلويت ✦</div>
+        <div class="rule-card" onclick="openSection('general-city-rules')">✦ قوانين عامة ✦</div>
       </div>
     </div>
 
@@ -433,12 +432,103 @@
       </div>
     </div>
 
-    <!-- صفحة: قوانين الوزارات -->
+    <!-- 3. صفحة قائمة الوزارات (الرئيسية للوزارات) -->
     <div id="gov-rules" class="page-section">
-      <h1 class="title">قوانين الوزارات</h1>
+      <h1 class="title">قوانين الوزارات 👑</h1>
       <hr class="divider">
       <button class="back-btn" onclick="openSection('main-menu')">⬅ رجوع للرئيسية</button>
-      <div class="rules-list-box"><div class="rule-line">قريباً...</div></div>
+      <div class="buttons-grid">
+        <!-- تم إضافة onclick لفتح الصفحات الفرعية -->
+        <div class="rule-card" onclick="openSection('gov-constitution')">دستور الدولة 📜</div>
+        <div class="rule-card" onclick="openSection('gov-justice')">وزارة العدل 💼</div>
+        <div class="rule-card" onclick="openSection('gov-security')">مديرية الأمن العام 👮</div>
+        <div class="rule-card" onclick="openSection('gov-military')">القوات المسلحة 💂</div>
+        <div class="rule-card" onclick="openSection('gov-health')">وزارة الصحة 🧑‍⚕️</div>
+        <div class="rule-card" onclick="openSection('gov-haras')"> الحرس الملكي 👑</div>
+		<div class="rule-card" onclick="openSection('gov-almbaht')"> المباحث العامة 🕵🏽</div>
+      </div>
+    </div>
+
+    <!-- ========================================= -->
+    <!-- صفحات القوانين الفرعية للوزارات (جاهزة للكتابة) -->
+    <!-- ========================================= -->
+
+    <!-- صفحة: دستور الدولة -->
+    <div id="gov-constitution" class="page-section">
+      <h1 class="title">دستور الدولة 📜</h1>
+      <hr class="divider">
+      <button class="back-btn" onclick="openSection('gov-rules')">⬅ رجوع لقائمة الوزارات</button>
+      <div class="rules-list-box">
+        <div class="rule-line">1 . ( اكتب القانون الأول هنا... )</div>
+        <div class="rule-line">2 . ( اكتب القانون الثاني هنا... )</div>
+        <div class="rule-line">3 . ( اكتب القانون الثالث هنا... )</div>
+        <!-- يمكنك إضافة المزيد من الأسطر هنا -->
+      </div>
+    </div>
+
+    <!-- صفحة: وزارة العدل -->
+    <div id="gov-justice" class="page-section">
+      <h1 class="title">وزارة العدل 💼</h1>
+      <hr class="divider">
+      <button class="back-btn" onclick="openSection('gov-rules')">⬅ رجوع لقائمة الوزارات</button>
+      <div class="rules-list-box">
+        <div class="rule-line">1 . ( SOON )</div>
+        <div class="rule-line">2 . ( SOON )</div>
+      </div>
+    </div>
+
+    <!-- صفحة: مديرية الأمن العام -->
+    <div id="gov-security" class="page-section">
+      <h1 class="title">مديرية الأمن العام 👮</h1>
+      <hr class="divider">
+      <button class="back-btn" onclick="openSection('gov-rules')">⬅ رجوع لقائمة الوزارات</button>
+      <div class="rules-list-box">
+        <div class="rule-line">1 . ( SOON )</div>
+        <div class="rule-line">2 . ( SOON )</div>
+      </div>
+    </div>
+
+    <!-- صفحة: القوات المسلحة -->
+    <div id="gov-military" class="page-section">
+      <h1 class="title">القوات المسلحة 💂</h1>
+      <hr class="divider">
+      <button class="back-btn" onclick="openSection('gov-rules')">⬅ رجوع لقائمة الوزارات</button>
+      <div class="rules-list-box">
+        <div class="rule-line">1 . ( SOON )</div>
+        <div class="rule-line">2 . ( SOON )</div>
+      </div>
+    </div>
+
+    <!-- صفحة: وزارة الصحة -->
+    <div id="gov-health" class="page-section">
+      <h1 class="title">وزارة الصحة 🧑‍⚕️</h1>
+      <hr class="divider">
+      <button class="back-btn" onclick="openSection('gov-rules')">⬅ رجوع لقائمة الوزارات</button>
+      <div class="rules-list-box">
+        <div class="rule-line">1 . ( SOON )</div>
+        <div class="rule-line">2 . ( SOON )</div>
+      </div>
+    </div>
+
+    <!-- صفحة: شؤون القضاء -->
+    <div id="gov-haras" class="page-section">
+      <h1 class="title">الحرس الملكي 👑</h1>
+      <hr class="divider">
+      <button class="back-btn" onclick="openSection('gov-rules')">⬅ رجوع لقائمة الوزارات</button>
+      <div class="rules-list-box">
+        <div class="rule-line">1 . ( SOON )</div>
+        <div class="rule-line">2 . ( SOON )</div>
+      </div>
+    </div>
+
+    <div id="gov-almbaht" class="page-section">
+      <h1 class="title"> المباحث العامة 🕵🏽</h1>
+      <hr class="divider">
+      <button class="back-btn" onclick="openSection('gov-rules')">⬅ رجوع لقائمة الوزارات</button>
+      <div class="rules-list-box">
+        <div class="rule-line">1 . ( SOON )</div>
+        <div class="rule-line">2 . ( SOON )</div>
+      </div>
     </div>
 
     <div class="footer-text">
@@ -449,14 +539,18 @@
 
   <script>
     function openSection(sectionId) {
+      // إخفاء جميع الأقسام
       const sections = document.querySelectorAll('.page-section');
       sections.forEach(section => {
         section.classList.remove('active');
       });
 
+      // إظهار القسم المطلوب
       const targetSection = document.getElementById(sectionId);
       if (targetSection) {
         targetSection.classList.add('active');
+        // التمرير لأعلى الصفحة عند فتح قسم جديد
+        window.scrollTo(0, 0);
       }
     }
   </script>
