@@ -44,17 +44,10 @@
       animation: float 3.5s ease-in-out infinite;
     }
 
-    /* حركة الشعار للأعلى والأسفل */
     @keyframes float {
-      0% {
-        transform: translateY(0px);
-      }
-      50% {
-        transform: translateY(-12px);
-      }
-      100% {
-        transform: translateY(0px);
-      }
+      0% { transform: translateY(0px); }
+      50% { transform: translateY(-12px); }
+      100% { transform: translateY(0px); }
     }
 
     .container {
@@ -167,12 +160,115 @@
       font-size: 12.5px;
       line-height: 1.6;
       font-weight: bold;
-      white-space: nowrap;
+      white-space: pre-wrap;
+      word-wrap: break-word;
     }
 
     .rule-line strong {
       color: #FFF2A1;
       font-weight: bold;
+    }
+
+    .highlight-gold {
+      color: #E7C56A;
+    }
+
+    /* عناوين الأنظمة والحصانات */
+    .system-title {
+      font-size: 16px;
+      font-weight: bold;
+      margin-top: 15px;
+      margin-bottom: 5px;
+      padding: 8px 12px;
+      border-radius: 6px;
+      background: rgba(0, 0, 0, 0.4);
+      border-right: 4px solid;
+    }
+
+    .sys-accounting { color: #E7C56A; border-color: #E7C56A; }
+    .sys-work       { color: #D4AF37; border-color: #D4AF37; }
+    .sys-retirement { color: #C5A059; border-color: #C5A059; }
+    .sys-commitment { color: #E0A96D; border-color: #E0A96D; }
+    .sys-discipline { color: #CD853F; border-color: #CD853F; }
+    .sys-appoint    { color: #F4A460; border-color: #F4A460; }
+    .sys-intervention{ color: #DEB887; border-color: #DEB887; }
+    .sys-ministries { color: #FFF2A1; border-color: #FFF2A1; }
+    .sys-references { color: #D2B48C; border-color: #D2B48C; }
+    .sys-acceptance { color: #E6C280; border-color: #E6C280; }
+    .sys-public     { color: #B8860B; border-color: #B8860B; }
+    .sys-interest   { color: #DAA520; border-color: #DAA520; }
+    .sys-summons    { color: #F5DEB3; border-color: #F5DEB3; }
+
+    /* أقسام الحصانات */
+    .immunity-tier-1 { color: #FFF2A1; border-color: #FFF2A1; }
+    .immunity-tier-2 { color: #E7C56A; border-color: #E7C56A; }
+    .immunity-tier-3 { color: #D2B48C; border-color: #D2B48C; }
+
+    /* ========================================= */
+    /* تنسيقات القوائم المنسدلة (الأكورديون) */
+    /* ========================================= */
+    .accordion-container {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .accordion-item {
+      border-bottom: 1px solid rgba(128, 93, 43, 0.4);
+      padding-bottom: 8px;
+    }
+
+    .accordion-header {
+      width: 100%;
+      background: rgba(24, 19, 13, 0.6);
+      border: 1px solid rgba(128, 93, 43, 0.3);
+      padding: 14px 18px;
+      text-align: right;
+      color: #FFF2A1;
+      font-size: 15px;
+      font-weight: bold;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-radius: 6px;
+      transition: all 0.3s ease;
+    }
+
+    .accordion-header:hover {
+      background: rgba(42, 34, 22, 0.8);
+      border-color: #BA9048;
+      color: #FFF;
+    }
+
+    .accordion-header .arrow {
+      font-size: 12px;
+      transition: transform 0.3s ease;
+      color: #BA9048;
+    }
+
+    .accordion-item.active .accordion-header .arrow {
+      transform: rotate(180deg);
+    }
+
+    .accordion-content {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease-out, padding 0.3s ease;
+      background: rgba(0, 0, 0, 0.3);
+      border-radius: 0 0 6px 6px;
+      padding: 0 15px;
+    }
+
+    .accordion-item.active .accordion-content {
+      padding: 15px;
+      max-height: 2000px;
+      border: 1px solid rgba(128, 93, 43, 0.2);
+      border-top: none;
+    }
+
+    .accordion-content .rule-line {
+      margin-bottom: 12px;
     }
 
     .warning-text {
@@ -212,12 +308,15 @@
       .animated-logo {
         width: 110px;
       }
+      .warning-text {
+        white-space: normal;
+      }
     }
   </style>
 </head>
 <body>
 
-  <!-- الشعار المتحرك فوق المربع الرئيسي -->
+  <!-- الشعار المتحرك -->
   <div class="logo-container">
     <img src="https://lh3.googleusercontent.com/d/1MhtjldGq0dy7-Py8Wk5wLzVXja-vDBpY" alt="Logo" class="animated-logo">
   </div>
@@ -438,20 +537,20 @@
       <hr class="divider">
       <button class="back-btn" onclick="openSection('main-menu')">⬅ رجوع للرئيسية</button>
       <div class="buttons-grid">
-        <!-- تم إضافة onclick لفتح الصفحات الفرعية -->
         <div class="rule-card" onclick="openSection('gov-constitution')">دستور الدولة 📜</div>
-        <div class="rule-card" onclick="openSection('gov-justice')">وزارة العدل 💼</div>
+        <div class="rule-card" onclick="openSection('gov-system')">النظام الوزاري 🛡️</div>
+        <div class="rule-card" onclick="openSection('gov-immunities')">الحصانات 💼</div>
+        <div class="rule-card" onclick="openSection('gov-justice')">وزارة العدل ⚖️</div>
         <div class="rule-card" onclick="openSection('gov-security')">مديرية الأمن العام 👮</div>
         <div class="rule-card" onclick="openSection('gov-military')">القوات المسلحة 💂</div>
         <div class="rule-card" onclick="openSection('gov-health')">وزارة الصحة 🧑‍⚕️</div>
         <div class="rule-card" onclick="openSection('gov-haras')"> الحرس الملكي 👑</div>
-		<div class="rule-card" onclick="openSection('gov-almbaht')"> المباحث العامة 🕵🏽</div>
+        <div class="rule-card" onclick="openSection('gov-almbaht')"> المباحث العامة 🕵🏽</div>
+        <div class="rule-card" onclick="openSection('gov-katiba')">كتيبة القوات الخاصة ⚔️</div>
+        <div class="rule-card" onclick="openSection('gov-commandos')">🔰 𝐂𝐎𝐌𝐌𝐀𝐍𝐃𝐎𝐒</div>
+        <div class="rule-card" onclick="openSection('gov-emergency')">قوات الـطوارئ ☬</div>
       </div>
     </div>
-
-    <!-- ========================================= -->
-    <!-- صفحات القوانين الفرعية للوزارات (جاهزة للكتابة) -->
-    <!-- ========================================= -->
 
     <!-- صفحة: دستور الدولة -->
     <div id="gov-constitution" class="page-section">
@@ -459,21 +558,283 @@
       <hr class="divider">
       <button class="back-btn" onclick="openSection('gov-rules')">⬅ رجوع لقائمة الوزارات</button>
       <div class="rules-list-box">
-        <div class="rule-line">1 . ( اكتب القانون الأول هنا... )</div>
-        <div class="rule-line">2 . ( اكتب القانون الثاني هنا... )</div>
-        <div class="rule-line">3 . ( اكتب القانون الثالث هنا... )</div>
-        <!-- يمكنك إضافة المزيد من الأسطر هنا -->
+        <div class="rule-line"><strong>المادة الأولى :</strong> يجب على جميع سُكان المدينة الاِلتزام بالأسلوب المحترم و عدم التعامل بالسُلطة.</div>
+        <div class="rule-line"><strong>المادة الثانية :</strong> يمنع على العساكر سجن المواطن المخالف 20 شهر أو أكثر دون الرجوع للمحكمة.</div>
+        <div class="rule-line"><strong>المادة الثالثة :</strong> يحق للمواطن طلب محامي حتى و لو كان مُتهم بشهر واحد.</div>
+        <div class="rule-line"><strong>المادة الرابعة :</strong> يحق للمواطن الدخول الآمن للمراكز الحكومية[منطقة الاستقبال فقط] (مركز الأمن العام، المستشفى، مبنى وزارة العدل) في حال كان بحاجة لمساعدة (يسقط حق المواطن في حال كان مُتهم أو خالف قوانين المدينة).</div>
+        <div class="rule-line"><strong>المادة الخامسة :</strong> يحق للمواطن رفع قضية على العسكري "في النيابة العامة" في حال سجنه دون طلب محامي (يسقط حق المواطن في حال كانت تهمته الإهانة).</div>
+        <div class="rule-line"><strong>المادة السادسة :</strong> يحق للقادة والعسكر سجن المواطن دون طلب محامي في حال كانت تهمته الإهانة.</div>
+        <div class="rule-line"><strong>المادة الثامنة :</strong> تسقط حصانة الفرد في حال تطاول على المسؤولين (يشمل جميع الوزارات).</div>
+        <div class="rule-line"><strong>المادة التاسعة :</strong> يحق للمواطن المطالبة بالتعويض ما بين 100 ألف إلى 500 ألف في حال تم التعدي عليه جسديًا أو لفظيًا.[يشترط وجود دليل]</div>
+        <div class="rule-line"><strong>المادة العاشرة :</strong> يحق للمواطن رفع قضية على القادات والمسؤولين الخائنين للدولة في النيابة العامة إن وُجد دليل قاطع.</div>
+        <div class="rule-line"><strong>المادة الاِحدى عشر :</strong> يحق للمواطن المطالبة بتحويل قضيته للمحكمة في حال كان مجموع تهمه 20 أشهر أو أكثر وفي حال رفض العسكري تحويل القضية يحق للمواطن رفع قضية على العسكري في النيابة العامة.</div>
+        <div class="rule-line"><strong>المادة الاثني عشر :</strong> يمنع منعًا باتًا على أي شخص حمل أي سلاح غير مرخص (باستثناء العساكر أثناء تأديتهم لعملهم).</div>
+        <div class="rule-line"><strong>المادة الثالثة عشر :</strong> يحق للمواطن حرية التعبير عن رأيه داخل حدود الاِحترام.</div>
+        <div class="rule-line"><strong>المادة الرابعة عشر :</strong> يحق للعسكر الطلق "بعد إعطاء الإنذار الثاني " على من يعرقل عملهم أو من يقوم بإهانتهم.</div>
+        <div class="rule-line"><strong>المادة الخامسة عشر :</strong> يحق للمواطن تعيين محامي خاص به والتواصل معه في حال تم القبض عليه وأخذه للتوقيف، ويحق له رفع شكوى على العسكري في حال رفض طلبه.</div>
+        <div class="rule-line"><strong>المادة السادسة عشر :</strong> عدم اِحترامك لمنسوبي الوزارات يؤدي بك للسجن مدة لا تقل عن 10 أشهر.</div>
+        <div class="rule-line"><strong>المادة السابعة عشر :</strong> يحق للمواطن رفض التحدث مع العسكري إلى حين وصول المحامي.</div>
+        <div class="rule-line"><strong>المادة الثامنة عشر :</strong> يحق المواطن رفع قضية على العسكري في حال صادر منه الممنوعات قبل وصول المحامي ولكن بوجود تصوير قو برو (يسقط الحق في حال مصادرتها لعدم وجود محامين داخل المدينة).</div>
+        <div class="rule-line"><strong>المادة التاسعة عشر :</strong> يحق للمواطن رفع شكوى على العسكري في حال ألقى القبض عليه دون طلب هويته (يسقط حق المواطن في حال كان هارب وغير متعاون أو في موقع شبهة).</div>
+        <div class="rule-line"><strong>المادة العشرون :</strong> يحق للعسكري التفتيش قبل طلب الهوية في حالة الاشتباه.</div>
+        <div class="rule-line"><strong>المادة الواحد والعشرون :</strong> يتم محاسبة كل خائن للوزارات بالفصل الفوري والسجن لمدة لا تزيد عن 60 شهر.</div>
+        <div class="rule-line"><strong>المادة الثانية والعشرون :</strong> يحق للمواطن ب اتصال واحد في حال ايقافه في الزنزانات [قبل سجن او التعامل معه].</div>
+        <div class="rule-line"><strong>المادة الثلاثة والعشرون :</strong> يحق للعسكري صدم الشخص الهارب بعد 5 دقائق ويحق له الطلق على الكفرات فقط بعد 8 دقائق من ابتداء المطاردة ويمنع الطلق على المواطن الهارب الا في حال اخراج السلاح الناري ويسمح تيزرت المواطن في حال هروبه على الاقدام وكلبشته.</div>
+      </div>
+    </div>
+
+    <!-- صفحة: النظام الوزاري -->
+    <div id="gov-system" class="page-section">
+      <h1 class="title">النظام الوزاري 🛡️</h1>
+      <hr class="divider">
+      <button class="back-btn" onclick="openSection('gov-rules')">⬅ رجوع لقائمة الوزارات</button>
+      <div class="rules-list-box">
+        <div class="system-title sys-accounting">⚖️ نظام المحاسبات</div>
+        <div class="rule-line"><strong>المادة رقم ( 1 ) :</strong> يتم جرد الضباط كل 14 يوم وفي حال عدم التفاعل يحال للتقاعد المبكر في حالات استثنائية يتم كسر رتبة</div>
+        <div class="rule-line"><strong>المادة رقم ( 2 ) :</strong> يحق لي القائد الاعلى محاسبة الوزير و النائب بـ تحذيرين وظيفية فقط</div>
+        <div class="rule-line"><strong>المادة رقم ( 3 ) :</strong> يحق لي القائد الاعلى للقوات العسكرية ب محاسبة الوزير ونائبه ب تحذير وظيفي فقط</div>
+        <div class="rule-line"><strong>المادة رقم ( 4 ) :</strong> يحق لي القائد الاعلى للقوات العسكرية ب محاسبة القادة والنواب ب 3 تحاذير</div>
+        <div class="rule-line"><strong>المادة رقم ( 5 ) :</strong> يحق لي الوزير و نائبه محاسبه المدير او القائد او الرئيس و نائبيهم بي تحذيرين فقط في حال محاسبته بأكثر من تحذيرين ترفع للرئاسه للإطلاع على الموضوع</div>
+        <div class="rule-line"><strong>المادة رقم ( 6 ) :</strong> يحق لي الوزير و نائبه محاسبة مستشار وزاري ب ثلاث تحذيرات فقط</div>
+        <div class="rule-line"><strong>المادة رقم ( 7 ) :</strong> لا يحق لاي من كان التدخل والطعن في قرارات رئاسة الوزراء ومن يتدخل بالقرارات او يطعن سيتم محاسبته بأشد العقوبات وقد يتم اعفائه</div>
+        <div class="rule-line"><strong>المادة رقم ( 8 ) :</strong> صلاحيات الرتب:
+- ملازم, ملازم اول : رفع ملفات للشؤون الداخلية
+- نقيب: محاسبة ملازم اول انذارين وظيفية ملازم وتحت ثلاث انذارات فصل جندي
+- رائد: محاسبة نقيب انذارين ملازم اول فما دون ثلاث انذارات فصل جندي اول فما دون
+- مقدم: محاسبة رائد انذارين وظيفية نقيب فما دون ثلاث انذارات فصل عريف فما دون 
+- عقيد: محاسبة مقدم انذار وظيفي ورائد فما دون ثلاث انذارات فصل وكيل رقيب فما دون 
+- عميد: محاسبة عقيد انذار وظيفي ومقدم فما دون ثلاث انذارات فصل رقيب فما دون
+- لواء: عقيد فما دون ثلاث انذارات فصل رقيب اول فما دون
+- فريق و فريق اول: تحدد من قبل الرئاسة
+ملاحظة: في حال حصولك على دورة الأركــان يحقلك محاسبة اي شخص دون رتبتك ب ثلاث تحذيرات وكسر رئيس رقباء فما دون
+ملاحظة: اي رتبة اقل منك لديك جميع الصلاحيات الميدانية [التثبيت والخ..]</div>
+        <div class="rule-line"><strong>المادة رقم ( 9 ) :</strong> يحق لي القائد و نائبه محاسبة مستشار وزاري ب تحذير فقط</div>
+
+        <div class="system-title sys-work">💼 نظام العمل</div>
+        <div class="rule-line"><strong>المادة رقم ( 1 ) :</strong> في حال رؤيه مسؤول لا يعرف التصرف في قطاعه و لا تؤدي مهامه يتم اعفاءه بشكل فوري</div>
+
+        <div class="system-title sys-retirement">🎖️ نظام التقاعد</div>
+        <div class="rule-line"><strong>المادة رقم ( 1 ) :</strong> يتم انشاء 3 مراتب عسكرية تمنح للأشخاص الذين خدمو الوزارات وهي :
+1- مرتبة ممتازة
+2- مرتبة المتوسطة
+3- المرتبة المتدنية</div>
+        <div class="rule-line"><strong>المادة رقم ( 2 ) :</strong> تمنح مرتبة الشرف فقط من رئاسة الوزراء ويحق لمستحقه الرجوع على نفس رتبته او منصبه - المرتبة الممتازة يكسر الشخص رتبة - المرتبة المتوسطة يكسر رتبتين - المرتبة المتدنية يكسر اربع رتب</div>
+        <div class="rule-line"><strong>المادة رقم ( 3 ) :</strong> يحق للوزير والنائب والقائد والنائب ب اعطاء مرتبة الممتازة و المتوسطة والمتدنية فقط ووجب استحقاقها بناء على نظام الترقيات والتفاعل</div>
+
+        <div class="system-title sys-commitment">📌 نظام الإلتزام</div>
+        <div class="rule-line"><strong>المادة رقم ( 1 ) :</strong> في حال هناك تسيب في الصف العسكري من قبل الافراد يتم محاسبه ( الضابط ) المسؤول عن الصف تصل لي انزال رتبه.</div>
+        <div class="rule-line"><strong>المادة رقم ( 2 ) :</strong> في حال كان هناك مسؤول الفترة يجب عليه اتخاذ القرارت بالشكل الصحيح في جميع المواقف والمهمات في حال عدم اتخاذ القرار الصحيح ستتم المحاسبة بي تجميد الصلاحيات لمدة اسبوع واعادة تأهيل الضابط</div>
+        <div class="rule-line"><strong>المادة رقم ( 3 ) :</strong> في حال عدم الالتزام بالبرتكول العسكري الميداني اثناء اداء المهمات والواجبات يتم محاسبة المخالف دون الرجوع له</div>
+
+        <div class="system-title sys-discipline">🛡️ نظام الانضباط</div>
+        <div class="rule-line"><strong>المادة رقم ( 1 ) :</strong> في حال الموظف من الضباط والمسؤولين ليس لديه اهتمام وتواجده قليل يتم احالتة الا التقاعد دون نقاش . .وفي حال انه من الافراد والرتب القليلة يتم فصله مباشرة</div>
+        <div class="rule-line"><strong>المادة رقم ( 2 ) :</strong> عند مخالفة اي قانون من القوانين الوزارية يتم انزال انذارات وظيفية ومعاقبات صارمة بحق المخالف مهما كانت رتبتة</div>
+        <div class="rule-line"><strong>المادة رقم ( 3 ) :</strong> يجب على جميع المسؤولين التواجد يومياً والاهتمام ويكون الشغل بكثافة من قبلهم في حال التهاون سوف يتم محاسبتك بـ أشد العقوبات</div>
+        <div class="rule-line"><strong>المادة رقم ( 4 ) :</strong> في حال كثرة الشكاوي على المسؤول يتم اعفائة بشكل فوري</div>
+        <div class="rule-line"><strong>المادة رقم ( 5 ) :</strong> عند تعيين شخص و تغيب عن العمل لمدة 10 ايام متقطعه يتم اعفائه من منصبه بشكل فوري</div>
+        <div class="rule-line"><strong>المادة رقم ( 6 ) :</strong> عدد الاستقالات المسموحه كل 48 ساعه استقالتين فقط من رتبة رقيب ومافوق وفي حال طلب اكثر من استقالتين يتم رفضها وتطبيق اللائحة النظامية بحقهم</div>
+
+        <div class="system-title sys-appoint">📝 نظام التعيين</div>
+        <div class="rule-line"><strong>المادة رقم ( 1 ) :</strong> عند تعيين شخص يجب اولاً الاجتماع معه لمدة محددة وااختباره في كافة المجالات ودراسة تواجده وبعدها يأتي التعيين بعد مناقشة الامر مع المسؤولين</div>
+        <div class="rule-line"><strong>المادة رقم ( 2 ) :</strong> في حال تعيين شخص لديه مدة محددة للاهتمام في الوزارة وتأدية الواجب خلال هاذي المدة في حال لا يكون مهتم وتواجده وتفاعله قليل يتم اعفاءه وتعيين اشخاص عملهم اكثر واهتمام عالي .</div>
+        <div class="rule-line"><strong>المادة رقم ( 3 ) :</strong> في حال تعيين شخص وملاحظة كثرة الشكاوي والملاحظات يتم اعفاءه بشكل فوري</div>
+        <div class="rule-line"><strong>المادة رقم ( 4 ) :</strong> يحق للقائد الاعلى تعيين رتبة نقيب في كافة القطاعات العسكرية</div>
+        <div class="rule-line"><strong>المادة رقم ( 5 ) :</strong> يحق للقائد الاعلى للقوات العسكرية تعيين رتبة ملازم اول في كافة القطاعات العسكرية بعد التشاور مع مسؤولين القطات</div>
+        <div class="rule-line"><strong>المادة رقم ( 6 ) :</strong> يحق للوزير ونائبه تعيين رتبة رئيس رقباء في كافة القطاعات العسكرية بعد التشاور مع مسؤولين القطاع مره واحده في اسبوعين</div>
+        <div class="rule-line"><strong>المادة رقم ( 7 ) :</strong> يحق للقائد و النائب بتعيين رقيب مره واحده كل اسبوعين</div>
+        <div class="rule-line"><strong>المادة رقم ( 8 ) :</strong> يحق للمستشار الوزاري بتعيين وكيل رقيب مره واحده كل اسبوعين</div>
+        <div class="rule-line"><strong>المادة رقم ( 9 ) :</strong> في حال شخص لديه رغبة في الرجوع الى قطاعه او وزارة يتم التعيين برتبة بناية على مرتبتة السابقه في خدمته في الوزارة وتتكون المراتب من : المرتبة الممتازة المرتبة المتوسطة المرتبة المتدنية</div>
+
+        <div class="system-title sys-intervention">🔍 نظام التدخل الوزاري</div>
+        <div class="rule-line"><strong>المادة رقم ( 1 ) :</strong> يمنع ترقية اي شخص بـ اكثر من ترقية دون التسلسل بي الرتب الا بعد اخذ الاذن من رئيس الوزراء و نائبه ويعاقب من لا يطبق النظام بي أشد العقوبات</div>
+        <div class="rule-line"><strong>المادة رقم ( 2 ) :</strong> لا يحق لي اي وزير و نائب وزير اعفاء او تعين مستشار وزاري , الا بعد الرجوع لي القائد الاعلى للقوات العسكرية</div>
+
+        <div class="system-title sys-ministries">🏛️ نظام الوزارات</div>
+        <div class="rule-line"><strong>المادة رقم ( 1 ) :</strong> يحق لرئاسة الوزراء التدخل في شؤون جميع الوزارات العسكرية والحكومية ومن يرفض التعامل مع رئاسة الوزراء يعتبر فاسد والمفسد لا مكان له بيننا وسيتم اعفائه من الوزارة التابع لها</div>
+        <div class="rule-line"><strong>المادة رقم ( 2 ) :</strong> يمنع قبول اي سيناريو في حال عددكم اقل من 4 (ويسمح لك بالتوجه بدون اعلان في حال تم قبول السيناريو من قطاع اخر)</div>
+
+        <div class="system-title sys-references">📚 نظام المراجع</div>
+        <div class="rule-line"><strong>المادة رقم ( 1 ) :</strong> على جميع منسوبي الوزارات والقطاعات الالتزام بنظام تخطي الرتب والمراجع للقطاع التابع له ومن يتخطى النظام الوزاري ستتم محاسبته من قبل مسؤولين القطاع او الوزارة بتحذيرات وظيفية صارمة</div>
+        <div class="rule-line"><strong>المادة رقم ( 2 ) :</strong> في حال تعديك على صلاحياتك والتغيير في الانظمة الوزارية واصدار قرارات بدون مشاوره رئاسة الوزراء فيها سيتم تطبيق اشد العقوبات بحقك ولن يتم التهاون مع اي شخص يتعدى على الصلاحيات</div>
+
+        <div class="system-title sys-acceptance">📋 نظام القبول</div>
+        <div class="rule-line"><strong>المادة رقم ( 1 ) :</strong> في حال عدم تعليم الجندي الية طلب محامي يتم محاسبه مسؤول القبول الذي وظفه بي تحذير اول + في حال تكررت يتم سحب صلاحيه القبول و التجنيد منه لي فتره زمنيه لاتقل عن 7 ايام</div>
+
+        <div class="system-title sys-public">🌐 نظام المصلحة العامة</div>
+        <div class="rule-line"><strong>المادة رقم ( 1 ) :</strong> عند رؤية مسؤولين مهملين او لايتواجدون وليس لديهم اهتمام يتم إحالتهم الى التقاعد فوراً</div>
+
+        <div class="system-title sys-interest">⭐ نظام الاهتمام</div>
+        <div class="rule-line"><strong>المادة رقم ( 1 ) :</strong> في حال التهاون في قبول المقدمين او المشتكين يتم سحب الصلاحية مباشرة مهما كانت رتبتة</div>
+
+        <div class="system-title sys-summons">📢 نظام الأستدعاء</div>
+        <div class="rule-line"><strong>المادة رقم ( 1 ) :</strong> في حال شخص تم استدعائة وتخلف عن الموعد سيتم محاسبتة ب اشد العقوبات</div>
+
+      </div>
+    </div>
+
+    <!-- صفحة: الحصانات -->
+    <div id="gov-immunities" class="page-section">
+      <h1 class="title">الحصانات 💼</h1>
+      <hr class="divider">
+      <button class="back-btn" onclick="openSection('gov-rules')">⬅ رجوع لقائمة الوزارات</button>
+      <div class="rules-list-box">
+        <div class="system-title immunity-tier-1">👑 الحصانات من الدرجة الأولى</div>
+        <div class="rule-line"><strong>الصلاحيات :</strong> يحق للعسكري طلب الهوية ولا يحق له تفتيشهم او محاسبتهم بأي شكل من الاشكال.</div>
+        <div class="rule-line"><strong>الفئات المستحقة :</strong> [جميع اعضاء المجلس الاعلى وموظفي المرتبة الممتازة من لواء وااعلى].</div>
+        <div class="rule-line" style="color: #ff4d4d;"><strong>مهم جداً :</strong> اي شخص يكسر حصانة من الدرجة الاولى راح يتم محاسبته كسر رتبة + انذارين وظيفيين.</div>
+
+        <div class="system-title immunity-tier-2">🎖️ الحصانات من الدرجة الثانية</div>
+        <div class="rule-line"><strong>الصلاحيات :</strong> يحق للعسكري طلب الهوية وتفتيشهم لكن دون محاسبتهم بأي شكل من الاشكال او مصادرة الممنوعات.</div>
+        <div class="rule-line"><strong>الفئات المستحقة :</strong> [نقيب و اعلى] و [المدعي العام واعلى] و [دكتور و اعلى].</div>
+        <div class="rule-line" style="color: #ff4d4d;"><strong>مهم جداً :</strong> اي شخص يكسر حصانة من الدرجة الثانية راح يتم محاسبته انذارين وظيفيين.</div>
+
+        <div class="system-title immunity-tier-3">🛡️ الحصانات من الدرجة الثالثة</div>
+        <div class="rule-line"><strong>الصلاحيات :</strong> يحق لمنسوبي وزارة الداخلية و وزارة الدفاع تفتيشه ومحاسبتهم ومخالفته اذا لم يكن مستلم قضية.</div>
+        <div class="rule-line"><strong>الفئات المستحقة :</strong> [ملازم اول و ادنى] و [محقق و ادنى] و [ممرض و ادنى].</div>
+        <div class="rule-line" style="color: #ff4d4d;"><strong>مهم جداً :</strong> اي شخص يكسر حصانة من الدرجة الثالثة راح يتم محاسبته انذار وظيفي اول.</div>
       </div>
     </div>
 
     <!-- صفحة: وزارة العدل -->
     <div id="gov-justice" class="page-section">
-      <h1 class="title">وزارة العدل 💼</h1>
+      <h1 class="title">وزارة العدل ⚖️</h1>
       <hr class="divider">
       <button class="back-btn" onclick="openSection('gov-rules')">⬅ رجوع لقائمة الوزارات</button>
-      <div class="rules-list-box">
-        <div class="rule-line">1 . ( SOON )</div>
-        <div class="rule-line">2 . ( SOON )</div>
+      
+      <div class="rules-list-box" style="gap: 0; padding: 15px;">
+        <div class="accordion-container">
+          
+          <!-- 1. قوانين وزارة العدل -->
+          <div class="accordion-item">
+            <div class="accordion-header" onclick="toggleAccordion(this)">
+              <span>قوانين وزارة العدل 🏛️</span>
+              <span class="arrow">▼</span>
+            </div>
+            <div class="accordion-content">
+              <div class="system-title sys-ministries">المادة الأولى :</div>
+              <div class="rule-line">لا يحق لأي من كان من منسوبي وزارة العدل باهانة العساكر</div>
+
+              <div class="system-title sys-ministries">المادة الثانية :</div>
+              <div class="rule-line">لايحق تلويت القضاه و ضباط المحكمة والمحامين</div>
+
+              <div class="system-title sys-ministries">المادة السادسة :</div>
+              <div class="rule-line">يجب على منسوبي وزارة العدل الإلتزام بالزي الرسمي</div>
+
+              <div class="system-title sys-ministries">المادة التاسعة :</div>
+              <div class="rule-line">يحق لمنسوبي وزارة العدل طلب تعويض في حالة تم إهانتهم او اهانة موكلهم</div>
+
+              <div class="system-title sys-ministries">المادة العاشرة :</div>
+              <div class="rule-line">تتم المحاكمة العسكرية بوجود قاضي عسكري من احد القطاعات</div>
+
+              <div class="rule-line" style="margin-top: 15px;">• يمنع معنًا باتًا على منسوبي وزارة العدل كفالة أي مُتهم.</div>
+              <div class="rule-line">• يحق لمنسوبي وزارة العدل في حال اِستلامهم لقضية في أحد المراكز الحكومية الدخول الآمن و يمنع عرقلتهم داخل المركز أو خارجه بأي وسيلة كانت أو محاولة إخراجهم بالقوة.</div>
+            </div>
+          </div>
+
+          <!-- 2. قوانين المحكمة -->
+          <div class="accordion-item">
+            <div class="accordion-header" onclick="toggleAccordion(this)">
+              <span>قوانين المحكمة 🧑‍⚖️</span>
+              <span class="arrow">▼</span>
+            </div>
+            <div class="accordion-content">
+              <div class="system-title sys-accounting">المادة الأولى :</div>
+              <div class="rule-line">إحترام جميع من في المحكمة دون إستثناء</div>
+
+              <div class="system-title sys-accounting">المادة الثانية :</div>
+              <div class="rule-line">عدم رفع الصوت والتحدث بلباقة وعدم السخرية</div>
+
+              <div class="system-title sys-accounting">المادة الثالثة :</div>
+              <div class="rule-line">عدم مقاطعة المتحدث نهائياً</div>
+
+              <div class="system-title sys-accounting">المادة الرابعة :</div>
+              <div class="rule-line">بإستطاعة محامي الطرف الثاني الإعتراض على أقوال الطرف الأول بقوله ( ( أعترض ) ) وفي حال قبل اعتراضك من قبل القاضي اذكر السبب</div>
+
+              <div class="system-title sys-accounting">المادة الخامسة :</div>
+              <div class="rule-line">لا يتحدث أثناء الجلسة غير القاضي ومن يسمح لهم بالتحدث</div>
+
+              <div class="system-title sys-accounting">المادة السادسة :</div>
+              <div class="rule-line">يمكن للمواطنين حضور القضايا ما عدا إذا كانت جلسة خاصة (( الي يحق لهم بدخول الجلسة الخاصة هم موظفين القطاعات الحكومية ))</div>
+
+              <div class="system-title sys-accounting">المادة السابعة :</div>
+              <div class="rule-line">مسموح لضابط المحكمة ولمن يأذن له القاضي برفع السلاح بالمحكمة وسجن اي مخالف في فيها</div>
+
+              <div class="system-title sys-accounting">المادة الثامنة :</div>
+              <div class="rule-line">يحق للقاضي رفض القضية إذا لم تتوفر الأدلة الكافية</div>
+
+              <div class="system-title sys-accounting">المادة التاسعة :</div>
+              <div class="rule-line">حكم القاضي هو حكم ثابت لا يمكن تغييره قطعاً</div>
+
+              <div class="system-title sys-accounting">المادة العاشرة :</div>
+              <div class="rule-line">إذا ثبتت مخالفة قرار القاضي تتم محاسبة المخالف بعقوبة قصوى سواء كان مواطن أو عسكري او مسعف</div>
+
+              <div class="system-title sys-accounting">المادة الحادية عشر :</div>
+              <div class="rule-line">يمنع منعا باتا الإستهزاء داخل المحكمة أبدأ سواء كان سيناريو او غير سيناريو ومن يخالف هذه المادة يسجن 30 شهر أو حسب قرار القاضي</div>
+
+              <div class="system-title sys-accounting">المادة الثانية عشر :</div>
+              <div class="rule-line">في حال مخالفتك في أي بروتوكول أو قانون يتم محاسبتك من قبل ضابط المحكمة في حال حاسبك شخص آخر لم يأذن له القاضي يحق لك الاعتراض والمطالبة بمحاسبته</div>
+            </div>
+          </div>
+
+          <!-- 3. المدة المسموحة -->
+          <div class="accordion-item">
+            <div class="accordion-header" onclick="toggleAccordion(this)">
+              <span>المدة المسموحة ⏳</span>
+              <span class="arrow">▼</span>
+            </div>
+            <div class="accordion-content">
+              <div class="rule-line"><span class="highlight-gold">المدة المسموحة : هي الوقت المحدد من قبول الطلب والبدء في القضية والشروط التابعة لها</span></div>
+              <div class="rule-line">في حال طلب محامي ولم يتم قبوله خلال دقيقة يتم محاسبة المتهم مباشرة</div>
+              <div class="rule-line">من وقت قبول الطلب لديك <span class="highlight-gold">5 دقائق</span> للتوجة لموقع الطلب</div>
+              <div class="rule-line">من وقت دخول المركز لديك <span class="highlight-gold">10دقائق</span> لأنهاء القضية وفي حال الاطالة اسحب نفسك من القضية</div>
+              <div class="rule-line" style="color: #ff4d4d; margin-top: 15px;">في حال مخالفة اي امر من هاذه الشروط يتم محاسبة الطرف المخالف</div>
+            </div>
+          </div>
+
+          <!-- 4. انتحال شخصية منسوبي وزارة العدل -->
+          <div class="accordion-item">
+            <div class="accordion-header" onclick="toggleAccordion(this)">
+              <span>انتحال شخصية منسوبي وزارة العدل 💼</span>
+              <span class="arrow">▼</span>
+            </div>
+            <div class="accordion-content">
+              <div class="rule-line">• إنتحال شخصية "قاضي" فما فوق : سجن 30 شهر + غرامة 200 الف</div>
+              <div class="rule-line">• إنتحال شخصية "محامي" فما فوق : سجن 15 شهر + غرامة 100 الف</div>
+            </div>
+          </div>
+
+          <!-- 5. عند تخفيضك للعقوبة -->
+          <div class="accordion-item">
+            <div class="accordion-header" onclick="toggleAccordion(this)">
+              <span>عند تخفيضك للعقوبة ⚖️</span>
+              <span class="arrow">▼</span>
+            </div>
+            <div class="accordion-content">
+              <div class="rule-line"><strong>: تهمة السجن</strong></div>
+              <div class="rule-line">• كل 𝟓 شهور تخفيف : يأخذ المحـامي 50 الف</div>
+              <div class="rule-line">• كل 𝟏𝟎 شهور تخفيف : يأخذ المحامي 70 الف</div>
+              <div class="rule-line">• عند تبرئته من القضية : يأخذ المحامي 100 الف</div>
+              <div class="rule-line" style="margin-top: 10px;"><strong>: تهمة المخالفة</strong></div>
+              <div class="rule-line">• كل ازالة 𝟓 الاف مخالفة : ياخذ المحامي 3الاف</div>
+              <div class="rule-line">• كل ازالة 10 الاف مخالفة : ياخذ المحامي 7 الاف</div>
+              <div class="rule-line" style="color: #E7C56A; margin-top: 10px;">المبالغ هاذه في حال يريد المحامي الاتفاق مع المتهم بمبلغ القضية وليس الزامي</div>
+            </div>
+          </div>
+
+          <!-- 6. قانون الاستقالة و الاجازة -->
+          <div class="accordion-item">
+            <div class="accordion-header" onclick="toggleAccordion(this)">
+              <span>قانون الاستقالة و الاجازة ❗</span>
+              <span class="arrow">▼</span>
+            </div>
+            <div class="accordion-content">
+              <div class="rule-line">• يجب عليك اكمال اسبوعين في وزارة العدل و تصل لرتبة مستشار قانوني</div>
+              <div class="rule-line">• في حال عدم وصولك للرتبة المطلوبة عليك دفع غرامة قدرها 2 مليونين + سجن 30 شهر+ فصل</div>
+              <div class="rule-line">• ممنوع تقدم على أجازة اكثر من 15 يوم فقط غير ذلك يجب عليك الاستقالة من القطاع</div>
+            </div>
+          </div>
+
+        </div>
       </div>
     </div>
 
@@ -510,7 +871,7 @@
       </div>
     </div>
 
-    <!-- صفحة: شؤون القضاء -->
+    <!-- صفحة: الحرس الملكي -->
     <div id="gov-haras" class="page-section">
       <h1 class="title">الحرس الملكي 👑</h1>
       <hr class="divider">
@@ -521,8 +882,42 @@
       </div>
     </div>
 
+    <!-- صفحة: المباحث العامة -->
     <div id="gov-almbaht" class="page-section">
       <h1 class="title"> المباحث العامة 🕵🏽</h1>
+      <hr class="divider">
+      <button class="back-btn" onclick="openSection('gov-rules')">⬅ رجوع لقائمة الوزارات</button>
+      <div class="rules-list-box">
+        <div class="rule-line">1 . ( SOON )</div>
+        <div class="rule-line">2 . ( SOON )</div>
+      </div>
+    </div>
+
+    <!-- صفحة: كتيبة القوات الخاصة -->
+    <div id="gov-katiba" class="page-section">
+      <h1 class="title">كتيبة القوات الخاصة ⚔️</h1>
+      <hr class="divider">
+      <button class="back-btn" onclick="openSection('gov-rules')">⬅ رجوع لقائمة الوزارات</button>
+      <div class="rules-list-box">
+        <div class="rule-line">1 . ( SOON )</div>
+        <div class="rule-line">2 . ( SOON )</div>
+      </div>
+    </div>
+
+    <!-- صفحة: COMMANDOS -->
+    <div id="gov-commandos" class="page-section">
+      <h1 class="title">🔰 𝐂𝐎𝐌𝐌𝐀𝐍𝐃𝐎𝐒</h1>
+      <hr class="divider">
+      <button class="back-btn" onclick="openSection('gov-rules')">⬅ رجوع لقائمة الوزارات</button>
+      <div class="rules-list-box">
+        <div class="rule-line">1 . ( SOON )</div>
+        <div class="rule-line">2 . ( SOON )</div>
+      </div>
+    </div>
+
+    <!-- صفحة: قوات الطوارئ -->
+    <div id="gov-emergency" class="page-section">
+      <h1 class="title">قوات الـطوارئ ☬</h1>
       <hr class="divider">
       <button class="back-btn" onclick="openSection('gov-rules')">⬅ رجوع لقائمة الوزارات</button>
       <div class="rules-list-box">
@@ -538,20 +933,24 @@
   </div>
 
   <script>
+    // التنقل بين الصفحات
     function openSection(sectionId) {
-      // إخفاء جميع الأقسام
       const sections = document.querySelectorAll('.page-section');
       sections.forEach(section => {
         section.classList.remove('active');
       });
 
-      // إظهار القسم المطلوب
       const targetSection = document.getElementById(sectionId);
       if (targetSection) {
         targetSection.classList.add('active');
-        // التمرير لأعلى الصفحة عند فتح قسم جديد
         window.scrollTo(0, 0);
       }
+    }
+
+    // التحكم في فتح وطَي الأكورديون (القوائم المنسدلة)
+    function toggleAccordion(header) {
+      const item = header.parentElement;
+      item.classList.toggle('active');
     }
   </script>
 
